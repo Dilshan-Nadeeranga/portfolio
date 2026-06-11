@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Clock, Calendar, Tag, X, ArrowLeft, BookOpen } from 'lucide-react'
+import { Clock, Calendar, Tag, ArrowLeft, BookOpen } from 'lucide-react'
 import { useBlogList, useBlogPost, type BlogPost } from '../hooks/useMarkdown'
 
 function BlogCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
@@ -22,15 +22,15 @@ function BlogCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
         ))}
       </div>
 
-      <h3 className="font-bold text-lg text-white group-hover:text-primary-300 transition-colors mb-2 leading-snug">
+      <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors mb-2 leading-snug">
         {post.title}
       </h3>
-      <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
         {post.excerpt}
       </p>
 
-      <div className="flex items-center justify-between pt-4 border-t border-white/5">
-        <div className="flex items-center gap-3 text-gray-500 text-xs">
+      <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-white/5">
+        <div className="flex items-center gap-3 text-gray-400 dark:text-gray-500 text-xs">
           <span className="flex items-center gap-1">
             <Calendar size={12} />
             {new Date(post.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
@@ -40,7 +40,7 @@ function BlogCard({ post, onClick }: { post: BlogPost; onClick: () => void }) {
             {post.readingTime} min read
           </span>
         </div>
-        <span className="text-primary-400 text-xs font-medium group-hover:text-primary-300 transition-colors">
+        <span className="text-primary-600 dark:text-primary-400 text-xs font-medium group-hover:text-primary-700 dark:group-hover:text-primary-300 transition-colors">
           Read more →
         </span>
       </div>
@@ -59,7 +59,7 @@ function BlogPostView({ slug, onBack }: { slug: string; onBack: () => void }) {
     >
       <button
         onClick={onBack}
-        className="flex items-center gap-2 text-gray-400 hover:text-white mb-8 transition-colors group"
+        className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mb-8 transition-colors group"
       >
         <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
         Back to Blog
@@ -70,7 +70,7 @@ function BlogPostView({ slug, onBack }: { slug: string; onBack: () => void }) {
           <div className="skeleton h-10 w-3/4 rounded" />
           <div className="skeleton h-4 w-1/3 rounded" />
           {[...Array(8)].map((_, i) => (
-            <div key={i} className="skeleton h-4 rounded" style={{ width: `${75 + Math.random() * 25}%` }} />
+            <div key={i} className="skeleton h-4 rounded" style={{ width: `${75 + (i * 7) % 25}%` }} />
           ))}
         </div>
       )}
@@ -92,7 +92,7 @@ function BlogPostView({ slug, onBack }: { slug: string; onBack: () => void }) {
             <h1 className="text-3xl md:text-4xl font-black gradient-text mb-4 leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-gray-500 text-sm">
+            <div className="flex items-center gap-4 text-gray-500 dark:text-gray-400 text-sm">
               <span className="flex items-center gap-1.5">
                 <Calendar size={14} />
                 {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
@@ -105,10 +105,7 @@ function BlogPostView({ slug, onBack }: { slug: string; onBack: () => void }) {
           </div>
 
           <div className="glass-card rounded-2xl p-6 md:p-8">
-            <div
-              className="blog-content"
-              dangerouslySetInnerHTML={{ __html: post.htmlContent }}
-            />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: post.htmlContent }} />
           </div>
         </article>
       )}
@@ -118,33 +115,32 @@ function BlogPostView({ slug, onBack }: { slug: string; onBack: () => void }) {
 
 export default function Blog() {
   const { posts, loading, error } = useBlogList()
-  const [selectedSlug, setSelectedSlug] = useState<string | null>(null)
+  const [selectedSlug, setSlug]   = useState<string | null>(null)
 
   return (
     <section id="blog" className="py-24 relative">
-      <div className="absolute inset-0 opacity-15"
-        style={{ background: 'radial-gradient(ellipse at center right, rgba(168,85,247,0.2) 0%, transparent 60%)' }} />
+      <div
+        className="absolute inset-0 opacity-10 dark:opacity-15"
+        style={{ background: 'radial-gradient(ellipse at center right, rgba(168,85,247,0.3) 0%, transparent 60%)' }}
+      />
 
       <div className="section-container relative z-10">
         <AnimatePresence mode="wait">
           {!selectedSlug ? (
-            <motion.div
-              key="list"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
+            <motion.div key="list" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <span className="text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">Insights</span>
-                <h2 className="text-4xl md:text-5xl font-black mb-4">
-                  Blog & <span className="gradient-text">Learnings</span>
+                <span className="text-primary-600 dark:text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">
+                  Insights
+                </span>
+                <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
+                  Blog &amp; <span className="gradient-text">Learnings</span>
                 </h2>
-                <p className="text-gray-400 max-w-xl mx-auto">
+                <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
                   Technical deep-dives, lessons learned from real projects, and insights on modern software engineering.
                 </p>
               </motion.div>
@@ -178,13 +174,13 @@ export default function Blog() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {posts.map(post => (
-                  <BlogCard key={post.slug} post={post} onClick={() => setSelectedSlug(post.slug)} />
+                  <BlogCard key={post.slug} post={post} onClick={() => setSlug(post.slug)} />
                 ))}
               </div>
             </motion.div>
           ) : (
             <motion.div key="post">
-              <BlogPostView slug={selectedSlug} onBack={() => setSelectedSlug(null)} />
+              <BlogPostView slug={selectedSlug} onBack={() => setSlug(null)} />
             </motion.div>
           )}
         </AnimatePresence>

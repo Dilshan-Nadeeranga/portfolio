@@ -3,17 +3,17 @@ import { Github, Star, GitFork, Circle, ExternalLink, AlertTriangle } from 'luci
 import { useGitHub } from '../hooks/useGitHub'
 
 const LANG_COLORS: Record<string, string> = {
-  JavaScript: '#F7DF1E',
+  JavaScript: '#D4A800',
   TypeScript: '#3178C6',
-  Python: '#3776AB',
-  Java: '#ED8B00',
-  Kotlin: '#7F52FF',
-  Dart: '#00B4AB',
-  'C#': '#9B4F96',
-  PHP: '#777BB4',
-  HTML: '#E34F26',
-  CSS: '#1572B6',
-  Shell: '#89E051',
+  Python:     '#3776AB',
+  Java:       '#ED8B00',
+  Kotlin:     '#7F52FF',
+  Dart:       '#00B4AB',
+  'C#':       '#9B4F96',
+  PHP:        '#777BB4',
+  HTML:       '#E34F26',
+  CSS:        '#1572B6',
+  Shell:      '#4EA94B',
 }
 
 function RepoCard({ repo, index }: { repo: ReturnType<typeof useGitHub>['repos'][0]; index: number }) {
@@ -33,15 +33,21 @@ function RepoCard({ repo, index }: { repo: ReturnType<typeof useGitHub>['repos']
     >
       <div className="flex items-start justify-between mb-3">
         <div className="flex items-center gap-2">
-          <Github size={18} className="text-gray-400 group-hover:text-primary-400 transition-colors" />
-          <span className="font-semibold text-gray-200 group-hover:text-white transition-colors text-sm">
+          <Github
+            size={18}
+            className="text-gray-500 dark:text-gray-400 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors shrink-0"
+          />
+          <span className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-gray-900 dark:group-hover:text-white transition-colors text-sm">
             {repo.name}
           </span>
         </div>
-        <ExternalLink size={14} className="text-gray-600 group-hover:text-primary-400 transition-colors shrink-0 ml-2" />
+        <ExternalLink
+          size={14}
+          className="text-gray-400 dark:text-gray-600 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors shrink-0 ml-2"
+        />
       </div>
 
-      <p className="text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-2">
+      <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 flex-1 line-clamp-2">
         {repo.description ?? 'No description available'}
       </p>
 
@@ -49,7 +55,12 @@ function RepoCard({ repo, index }: { repo: ReturnType<typeof useGitHub>['repos']
       {repo.topics && repo.topics.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mb-3">
           {repo.topics.slice(0, 3).map(topic => (
-            <span key={topic} className="text-xs px-2 py-0.5 rounded-full bg-primary-900/50 text-primary-400 border border-primary-700/30">
+            <span
+              key={topic}
+              className="text-xs px-2 py-0.5 rounded-full
+                bg-primary-100 dark:bg-primary-900/50 text-primary-700 dark:text-primary-400
+                border border-primary-200 dark:border-primary-700/30"
+            >
               {topic}
             </span>
           ))}
@@ -57,7 +68,7 @@ function RepoCard({ repo, index }: { repo: ReturnType<typeof useGitHub>['repos']
       )}
 
       {/* Stats */}
-      <div className="flex items-center gap-4 text-xs text-gray-500 pt-3 border-t border-white/5">
+      <div className="flex items-center gap-4 text-xs text-gray-500 pt-3 border-t border-gray-100 dark:border-white/5">
         {repo.language && (
           <div className="flex items-center gap-1.5">
             <Circle size={10} style={{ color: langColor, fill: langColor }} />
@@ -69,10 +80,10 @@ function RepoCard({ repo, index }: { repo: ReturnType<typeof useGitHub>['repos']
           <span>{repo.stargazers_count}</span>
         </div>
         <div className="flex items-center gap-1">
-          <GitFork size={12} className="text-gray-500" />
+          <GitFork size={12} className="text-gray-400" />
           <span>{repo.forks_count}</span>
         </div>
-        <span className="ml-auto text-gray-600 text-xs">
+        <span className="ml-auto text-gray-400 dark:text-gray-600 text-xs">
           {new Date(repo.updated_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
         </span>
       </div>
@@ -97,8 +108,10 @@ export default function GitHubActivity() {
 
   return (
     <section id="github" className="py-24 relative">
-      <div className="absolute inset-0 opacity-15"
-        style={{ background: 'radial-gradient(ellipse at top, rgba(99,102,241,0.2) 0%, transparent 60%)' }} />
+      <div
+        className="absolute inset-0 opacity-10 dark:opacity-15"
+        style={{ background: 'radial-gradient(ellipse at top, rgba(99,102,241,0.25) 0%, transparent 60%)' }}
+      />
 
       <div className="section-container relative z-10">
         <motion.div
@@ -107,11 +120,13 @@ export default function GitHubActivity() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">Open Source</span>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <span className="text-primary-600 dark:text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">
+            Open Source
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
             GitHub <span className="gradient-text">Activity</span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
             Latest public repositories — real-time data fetched from the GitHub API.
           </p>
 
@@ -131,11 +146,12 @@ export default function GitHubActivity() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="max-w-md mx-auto mb-8 p-4 rounded-xl glass-card border-amber-500/20 text-center"
+            className="max-w-md mx-auto mb-8 p-4 rounded-xl
+              bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 text-center"
           >
-            <AlertTriangle size={24} className="text-amber-400 mx-auto mb-2" />
-            <p className="text-amber-300 text-sm font-medium">GitHub API rate limit reached</p>
-            <p className="text-gray-400 text-xs mt-1">Please try again in a few minutes.</p>
+            <AlertTriangle size={24} className="text-amber-500 mx-auto mb-2" />
+            <p className="text-amber-700 dark:text-amber-300 text-sm font-medium">GitHub API rate limit reached</p>
+            <p className="text-gray-600 dark:text-gray-400 text-xs mt-1">Please try again in a few minutes.</p>
           </motion.div>
         )}
 
@@ -143,14 +159,15 @@ export default function GitHubActivity() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="max-w-md mx-auto mb-8 p-4 rounded-xl glass-card border-red-500/20 text-center"
+            className="max-w-md mx-auto mb-8 p-4 rounded-xl
+              bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 text-center"
           >
-            <p className="text-red-400 text-sm">Failed to load GitHub repositories</p>
+            <p className="text-red-600 dark:text-red-400 text-sm">Failed to load GitHub repositories</p>
             <a
               href="https://github.com/Dilshan-Nadeeranga"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary-400 text-xs mt-1 hover:text-primary-300"
+              className="text-primary-600 dark:text-primary-400 text-xs mt-1 hover:underline block"
             >
               View profile directly →
             </a>
@@ -164,19 +181,26 @@ export default function GitHubActivity() {
           }
         </div>
 
-        {/* GitHub Stats Banner */}
+        {/* GitHub stats card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="mt-12 glass-card rounded-2xl p-6 text-center"
         >
-          <p className="text-gray-400 text-sm mb-4">GitHub Contribution Stats</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">GitHub Contribution Stats</p>
           <img
-            src="https://github-readme-stats.vercel.app/api?username=Dilshan-Nadeeranga&show_icons=true&theme=transparent&title_color=6366f1&text_color=9ca3af&icon_color=a855f7&border_color=ffffff20&hide_border=false"
+            src="https://github-readme-stats.vercel.app/api?username=Dilshan-Nadeeranga&show_icons=true&theme=transparent&title_color=6366f1&text_color=6b7280&icon_color=a855f7&border_color=e5e7eb&hide_border=false"
             alt="GitHub Stats"
             loading="lazy"
-            className="mx-auto rounded-xl max-w-full"
+            className="mx-auto rounded-xl max-w-full dark:hidden"
+            onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+          <img
+            src="https://github-readme-stats.vercel.app/api?username=Dilshan-Nadeeranga&show_icons=true&theme=transparent&title_color=818cf8&text_color=9ca3af&icon_color=a855f7&border_color=ffffff20&hide_border=false"
+            alt="GitHub Stats"
+            loading="lazy"
+            className="mx-auto rounded-xl max-w-full hidden dark:block"
             onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
         </motion.div>

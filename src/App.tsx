@@ -14,8 +14,10 @@ import Footer from './components/Footer'
 export default function App() {
   const { theme, toggleTheme } = useTheme()
 
+  // useTheme already toggles the `dark` class on <html>.
+  // The wrapper just provides the page background transition.
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'dark bg-gray-950' : 'bg-gray-50'}`}>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
       <FancyCursor />
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
@@ -34,7 +36,8 @@ export default function App() {
       <Toaster
         position="bottom-right"
         toastOptions={{
-          className: '!bg-gray-800 !text-gray-100 !border !border-white/10 !rounded-xl',
+          className:
+            '!bg-white dark:!bg-gray-800 !text-gray-900 dark:!text-gray-100 !border !border-gray-200 dark:!border-white/10 !rounded-xl !shadow-lg',
           duration: 4000,
         }}
       />

@@ -7,8 +7,8 @@ import ProjectModal, { type Project } from './ProjectModal'
 const CATEGORIES = ['All', 'MERN', 'Mobile', 'AI', 'DevOps']
 
 const CATEGORY_GRADIENTS: Record<string, string> = {
-  AI: 'from-violet-600/20 to-purple-600/20',
-  MERN: 'from-blue-600/20 to-cyan-600/20',
+  AI:     'from-violet-600/20 to-purple-600/20',
+  MERN:   'from-blue-600/20 to-cyan-600/20',
   Mobile: 'from-pink-600/20 to-rose-600/20',
   DevOps: 'from-orange-600/20 to-amber-600/20',
 }
@@ -28,21 +28,20 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       onClick={onClick}
       data-cursor-hover
     >
-      {/* Card header with gradient */}
+      {/* Card header */}
       <div className={`h-40 bg-gradient-to-br ${gradient} relative overflow-hidden`}>
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-6xl font-black opacity-10 gradient-text">{project.title[0]}</span>
         </div>
 
-        {/* Category badge */}
         <div className="absolute top-3 left-3">
           <span className="tech-badge text-xs">{project.category}</span>
         </div>
 
         {project.featured && (
           <div className="absolute top-3 right-3 flex items-center gap-1">
-            <Star size={12} className="text-yellow-400 fill-yellow-400" />
-            <span className="text-xs text-yellow-400 font-medium">Featured</span>
+            <Star size={12} className="text-yellow-500 fill-yellow-500" />
+            <span className="text-xs text-yellow-600 dark:text-yellow-400 font-medium">Featured</span>
           </div>
         )}
 
@@ -52,17 +51,17 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           whileHover={{ opacity: 1 }}
           className="absolute inset-0 bg-primary-950/80 backdrop-blur-sm flex items-center justify-center gap-3"
         >
-          <div className="p-3 rounded-xl glass-card text-primary-400 hover:text-white transition-colors">
+          <div className="p-3 rounded-xl bg-white/10 border border-white/20 text-white">
             <Eye size={20} />
           </div>
         </motion.div>
       </div>
 
       <div className="p-5">
-        <h3 className="font-bold text-lg text-white group-hover:text-primary-300 transition-colors mb-2 line-clamp-2">
+        <h3 className="font-bold text-lg text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-300 transition-colors mb-2 line-clamp-2">
           {project.title}
         </h3>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
+        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
           {project.shortDesc}
         </p>
 
@@ -77,7 +76,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between pt-3 border-t border-white/5">
+        <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-white/5">
           <div className="flex gap-2">
             {project.githubUrl && (
               <a
@@ -85,7 +84,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
                 aria-label="GitHub"
               >
                 <Github size={16} />
@@ -97,7 +96,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={e => e.stopPropagation()}
-                className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-all"
+                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
                 aria-label="Live Demo"
               >
                 <ExternalLink size={16} />
@@ -105,7 +104,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
             )}
           </div>
           <button
-            className="text-xs text-primary-400 hover:text-primary-300 font-medium transition-colors"
+            className="text-xs text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 font-medium transition-colors"
             onClick={onClick}
           >
             Case Study →
@@ -117,10 +116,10 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
 }
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [loading, setLoading] = useState(true)
-  const [activeCategory, setActiveCategory] = useState('All')
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [projects, setProjects]         = useState<Project[]>([])
+  const [loading, setLoading]           = useState(true)
+  const [activeCategory, setActive]     = useState('All')
+  const [selectedProject, setSelected] = useState<Project | null>(null)
 
   useEffect(() => {
     fetchData<Project[]>('/data/projects.json')
@@ -135,8 +134,10 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-24 relative">
-      <div className="absolute inset-0 opacity-20"
-        style={{ background: 'radial-gradient(ellipse at top right, rgba(168,85,247,0.2) 0%, transparent 60%)' }} />
+      <div
+        className="absolute inset-0 opacity-10 dark:opacity-20"
+        style={{ background: 'radial-gradient(ellipse at top right, rgba(168,85,247,0.3) 0%, transparent 60%)' }}
+      />
 
       <div className="section-container relative z-10">
         <motion.div
@@ -145,16 +146,18 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <span className="text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">Portfolio</span>
-          <h2 className="text-4xl md:text-5xl font-black mb-4">
+          <span className="text-primary-600 dark:text-primary-400 text-sm font-semibold uppercase tracking-widest mb-3 block">
+            Portfolio
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black mb-4 text-gray-900 dark:text-white">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
+          <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
             A collection of projects that showcase my skills across web, mobile, AI, and DevOps domains.
           </p>
         </motion.div>
 
-        {/* Filter Tabs */}
+        {/* Filter tabs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -164,13 +167,13 @@ export default function Projects() {
           {CATEGORIES.map(cat => (
             <motion.button
               key={cat}
-              onClick={() => setActiveCategory(cat)}
+              onClick={() => setActive(cat)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat
                   ? 'bg-primary-600 text-white shadow-lg shadow-primary-500/30'
-                  : 'glass-card text-gray-400 hover:text-white hover:border-primary-500/30'
+                  : 'glass-card text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-white hover:border-primary-500/30'
               }`}
             >
               {cat}
@@ -197,16 +200,13 @@ export default function Projects() {
             ))}
           </div>
         ) : (
-          <motion.div
-            layout
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
+          <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <AnimatePresence mode="popLayout">
               {filtered.map(project => (
                 <ProjectCard
                   key={project.id}
                   project={project}
-                  onClick={() => setSelectedProject(project)}
+                  onClick={() => setSelected(project)}
                 />
               ))}
             </AnimatePresence>
@@ -217,14 +217,14 @@ export default function Projects() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-center py-16 text-gray-500"
+            className="text-center py-16 text-gray-500 dark:text-gray-500"
           >
             No projects in this category yet.
           </motion.div>
         )}
       </div>
 
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal project={selectedProject} onClose={() => setSelected(null)} />
     </section>
   )
 }

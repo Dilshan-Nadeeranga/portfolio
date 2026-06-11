@@ -1,0 +1,29 @@
+[
+  {
+    "slug": "kubernetes-for-developers",
+    "file": "/blog/kubernetes-for-developers.md",
+    "title": "Kubernetes for Developers: From Zero to CKA",
+    "date": "2025-10-15",
+    "tags": ["Kubernetes", "DevOps", "Docker", "Cloud"],
+    "excerpt": "My journey studying for the CKA certification – key concepts, practical tips, and resources that helped me understand Kubernetes architecture.",
+    "readingTime": 8
+  },
+  {
+    "slug": "mern-microservices-architecture",
+    "file": "/blog/mern-microservices-architecture.md",
+    "title": "Building Scalable MERN Apps with Microservices",
+    "date": "2026-01-20",
+    "tags": ["MERN", "Microservices", "Node.js", "MongoDB", "Architecture"],
+    "excerpt": "Lessons learned from architecting the AI Healthcare Platform – breaking a monolith into microservices, API gateways, and inter-service communication patterns.",
+    "readingTime": 10
+  },
+  {
+    "slug": "flutter-firebase-mobile-dev",
+    "file": "/blog/flutter-firebase-mobile-dev.md",
+    "title": "Flutter + Firebase: Building FarmLink's Real-Time Supply Chain",
+    "date": "2026-02-10",
+    "tags": ["Flutter", "Firebase", "Mobile", "Google Maps", "Real-Time"],
+    "excerpt": "How I built a multi-role agricultural supply chain app with Flutter, Firebase, real-time GPS tracking, and multilingual support for Sri Lankan farmers.",
+    "readingTime": 7
+  }
+]

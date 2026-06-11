@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "type": "work",
+    "title": "Software Engineer",
+    "company": "Invert Code",
+    "companyUrl": "https://www.invertcode.com/",
+    "location": "Sri Lanka",
+    "date": "Aug 2025 – Present",
+    "descriptionPoints": [
+      "Re-engineered legacy React JSX applications, improving code structure, performance, and maintainability.",
+      "Developed a TypeScript-based Restaurant Management System (RMS) with modern frontend architecture and reusable components.",
+      "Built an AI-powered interview management platform (Orbit) featuring candidate evaluation, interview workflows, and automated assessment support.",
+      "Developed an Appointment Management System using JavaScript for scheduling, tracking, and managing appointments efficiently.",
+      "Utilized modern web development practices, version control, debugging, and testing throughout the software development lifecycle.",
+      "Collaborated with developers, project managers, and stakeholders in agile development environments."
+    ],
+    "skills": ["React", "TypeScript", "JavaScript", "AI Integration", "Agile"]
+  },
+  {
+    "id": 2,
+    "type": "education",
+    "title": "BSc (Hons) Information Technology – Software Engineering",
+    "company": "Sri Lanka Institute of Information Technology (SLIIT)",
+    "companyUrl": "https://www.sliit.lk/",
+    "location": "Malabe, Sri Lanka",
+    "date": "Mar 2023 – Present",
+    "descriptionPoints": [
+      "Specializing in Software Engineering with a current GPA of 3.22.",
+      "Year 2 | Semester 1 – coursework includes Software Architecture, Database Systems, and Cloud Computing.",
+      "Active participant in team-based projects and GitHub collaborative development.",
+      "Expanding knowledge in cloud-native technologies with focus on Kubernetes and DevOps practices."
+    ],
+    "skills": ["Software Engineering", "OOP", "Algorithms", "Cloud Computing"]
+  },
+  {
+    "id": 3,
+    "type": "education",
+    "title": "BSc (Hons) Engineering Technology – Mechanical & Manufacturing",
+    "company": "Wayamba University of Sri Lanka",
+    "companyUrl": "https://wyb.ac.lk/",
+    "location": "Sri Lanka",
+    "date": "May 2024 – Present",
+    "descriptionPoints": [
+      "Pursuing a second degree in Engineering Technology with specialization in Mechanical & Manufacturing Technology.",
+      "Bridging engineering fundamentals with software technology for IoT and embedded system applications."
+    ],
+    "skills": ["Engineering Technology", "Manufacturing", "IoT"]
+  },
+  {
+    "id": 4,
+    "type": "education",
+    "title": "Assured Diploma in Information Technology",
+    "company": "ESOFT Metro Campus",
+    "companyUrl": "https://esoft.lk/",
+    "location": "Sri Lanka",
+    "date": "Oct 2020",
+    "descriptionPoints": [
+      "Completed with Credit Pass – foundational studies in software development, networking, and IT systems.",
+      "Gained hands-on experience with web development fundamentals and database design."
+    ],
+    "skills": ["Web Development", "Databases", "Networking"]
+  },
+  {
+    "id": 5,
+    "type": "education",
+    "title": "G.C.E A/L Engineering Technology",
+    "company": "Ananda College, Colombo",
+    "companyUrl": "",
+    "location": "Colombo, Sri Lanka",
+    "date": "2022",
+    "descriptionPoints": [
+      "Studied Engineering Technology stream with strong foundation in mathematics and applied science.",
+      "Active in school sports – Karate (Blue Belt), Swimming, Cricket (Provincial level)."
+    ],
+    "skills": ["Engineering", "Mathematics", "Applied Science"]
+  }
+]

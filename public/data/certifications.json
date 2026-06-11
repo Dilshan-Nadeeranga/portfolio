@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Certified Kubernetes Administrator (CKA)",
+    "issuer": "Udemy / CNCF",
+    "date": "2025",
+    "status": "Completed",
+    "link": "https://www.udemy.com/",
+    "icon": "kubernetes"
+  },
+  {
+    "id": 2,
+    "name": "Kubernetes Certified Application Developer (CKAD)",
+    "issuer": "Udemy / CNCF",
+    "date": "2025",
+    "status": "Ongoing",
+    "link": "https://www.udemy.com/",
+    "icon": "kubernetes"
+  },
+  {
+    "id": 3,
+    "name": "Certified Kubernetes Security Specialist (CKS)",
+    "issuer": "Udemy / CNCF",
+    "date": "2025",
+    "status": "Ongoing",
+    "link": "https://www.udemy.com/",
+    "icon": "kubernetes"
+  },
+  {
+    "id": 4,
+    "name": "Java Developer Certification",
+    "issuer": "Udemy",
+    "date": "2025",
+    "status": "Completed",
+    "link": "https://www.udemy.com/",
+    "icon": "java"
+  },
+  {
+    "id": 5,
+    "name": "MongoDB (C#, Node.js, Java, Python, PHP)",
+    "issuer": "MongoDB University",
+    "date": "2025",
+    "status": "Completed",
+    "link": "https://learn.mongodb.com/",
+    "icon": "mongodb"
+  }
+]

@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { label: 'Home',       href: '#hero' },
   { label: 'Skills',     href: '#skills' },
   { label: 'Projects',   href: '#projects' },
-  { label: 'Experience', href: '#experience' },
   { label: 'GitHub',     href: '#github' },
   { label: 'Blog',       href: '#blog' },
   { label: 'Contact',    href: '#contact' },
@@ -72,14 +71,20 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
                 onClick={() => scrollTo(link.href)}
                 className={`relative px-3 py-2 text-sm font-medium transition-colors rounded-lg ${
                   activeSection === link.href.slice(1)
-                    ? 'text-primary-600 dark:text-primary-400'
-                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                    ? scrolled ? 'text-primary-600 dark:text-primary-400' : 'text-primary-300'
+                    : scrolled
+                      ? 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100'
+                      : 'text-white/70 hover:text-white'
                 }`}
               >
                 {activeSection === link.href.slice(1) && (
                   <motion.span
                     layoutId="active-pill"
-                    className="absolute inset-0 rounded-lg bg-primary-500/10 border border-primary-500/20"
+                    className={`absolute inset-0 rounded-lg ${
+                      scrolled
+                        ? 'bg-primary-500/10 border border-primary-500/20'
+                        : 'bg-white/10 border border-white/20'
+                    }`}
                   />
                 )}
                 <span className="relative">{link.label}</span>
@@ -94,7 +99,11 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
             onClick={toggleTheme}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="p-2 rounded-xl text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
+            className={`p-2 rounded-xl transition-all ${
+              scrolled
+                ? 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-white/5'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
+            }`}
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
@@ -115,7 +124,11 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
             onClick={() => setIsOpen(!isOpen)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className="md:hidden p-2 rounded-xl text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-white/5 transition-all"
+            className={`md:hidden p-2 rounded-xl transition-all ${
+              scrolled
+                ? 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 hover:bg-gray-100 dark:hover:bg-white/5'
+                : 'text-white/70 hover:text-white hover:bg-white/10'
+            }`}
             aria-label="Toggle menu"
           >
             {isOpen ? <X size={20} /> : <Menu size={20} />}

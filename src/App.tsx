@@ -5,7 +5,6 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import TechOrbit from './components/TechOrbit'
 import Projects from './components/Projects'
-import Timeline from './components/Timeline'
 import GitHubActivity from './components/GitHubActivity'
 import Blog from './components/Blog'
 import Contact from './components/Contact'
@@ -25,7 +24,6 @@ export default function App() {
         <Hero />
         <TechOrbit />
         <Projects />
-        <Timeline />
         <GitHubActivity />
         <Blog />
         <Contact />

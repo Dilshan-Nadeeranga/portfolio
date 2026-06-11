@@ -10,7 +10,7 @@ interface Skill {
 }
 
 const TECH_COLORS: Record<string, string> = {
-  react:      '#61DAFB',
+  react:      '#0BA5C7', // darkened from #61DAFB — too light on white
   typescript: '#3178C6',
   javascript: '#D4A800', // darkened from #F7DF1E for visibility on light bg
   nodejs:     '#3D8A3D',
@@ -24,10 +24,10 @@ const TECH_COLORS: Record<string, string> = {
   mssql:      '#CC2927',
   flutter:    '#027DFD',
   kotlin:     '#7F52FF',
-  firebase:   '#F5A623', // darkened from #FFCA28
+  firebase:   '#E8950A', // darkened from #FFCA28
   tailwind:   '#0694A2',
   git:        '#E05C2A',
-  express:    '#6B7280', // was #FFFFFF — invisible on any bg
+  express:    '#4B5563', // was #FFFFFF — invisible on any bg
   aspnet:     '#512BD4',
   java:       '#ED8B00',
   figma:      '#F24E1E',

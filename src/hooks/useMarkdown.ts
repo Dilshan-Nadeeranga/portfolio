@@ -71,7 +71,7 @@ export function useBlogList() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    fetch('/blog/blog-manifest.json')
+    fetch(`${import.meta.env.BASE_URL}blog/blog-manifest.json`)
       .then(r => r.json())
       .then((data: BlogPost[]) => {
         const sorted = [...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -94,12 +94,12 @@ export function useBlogPost(slug: string) {
 
     async function load() {
       try {
-        const manifestRes = await fetch('/blog/blog-manifest.json')
+        const manifestRes = await fetch(`${import.meta.env.BASE_URL}blog/blog-manifest.json`)
         const manifest: BlogPost[] = await manifestRes.json()
         const meta = manifest.find(p => p.slug === slug)
         if (!meta) throw new Error('Post not found')
 
-        const mdRes = await fetch(meta.file)
+        const mdRes = await fetch(`${import.meta.env.BASE_URL}${meta.file.replace(/^\//, '')}`)
         if (!mdRes.ok) throw new Error('Failed to load post')
         const raw = await mdRes.text()
 

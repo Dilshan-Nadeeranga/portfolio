@@ -168,7 +168,7 @@ export default function Hero() {
           </motion.button>
 
           <motion.a
-            href="/Dilshan_Nadeeranga_CV.pdf"
+            href={`${import.meta.env.BASE_URL}Dilshan_Nadeeranga_CV.pdf`}
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

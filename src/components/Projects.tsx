@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, forwardRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Github, ExternalLink, Eye, Star } from 'lucide-react'
 import { fetchData } from '../utils/fetchData'
@@ -13,11 +13,13 @@ const CATEGORY_GRADIENTS: Record<string, string> = {
   DevOps: 'from-orange-600/20 to-amber-600/20',
 }
 
-function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+const ProjectCard = forwardRef<HTMLElement, { project: Project; onClick: () => void }>(
+  function ProjectCard({ project, onClick }, ref) {
   const gradient = CATEGORY_GRADIENTS[project.category] ?? 'from-primary-600/20 to-indigo-600/20'
 
   return (
     <motion.article
+      ref={ref}
       layout
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -113,7 +115,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
       </div>
     </motion.article>
   )
-}
+})
 
 export default function Projects() {
   const [projects, setProjects]         = useState<Project[]>([])

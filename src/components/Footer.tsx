@@ -75,7 +75,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="/Dilshan_Nadeeranga_CV.pdf"
+                  href={`${import.meta.env.BASE_URL}Dilshan_Nadeeranga_CV.pdf`}
                   download
                   className="flex items-center gap-2 text-gray-500 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400 text-sm transition-colors"
                 >

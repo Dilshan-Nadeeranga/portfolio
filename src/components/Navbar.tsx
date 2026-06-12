@@ -110,7 +110,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
           </motion.button>
 
           <motion.a
-            href="/Dilshan_Nadeeranga_CV.pdf"
+            href={`${import.meta.env.BASE_URL}Dilshan_Nadeeranga_CV.pdf`}
             download
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -159,7 +159,7 @@ export default function Navbar({ theme, toggleTheme }: NavbarProps) {
                 </motion.button>
               ))}
               <a
-                href="/Dilshan_Nadeeranga_CV.pdf"
+                href={`${import.meta.env.BASE_URL}Dilshan_Nadeeranga_CV.pdf`}
                 download
                 className="flex items-center gap-2 mt-2 btn-primary justify-center"
               >
